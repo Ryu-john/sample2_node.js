@@ -11,6 +11,22 @@ const BlogPost = require('./models/BlogPost')
 
 const fileUpload = require('express-fileupload')
 
+const customMiddleWare = (req,res,next)=>{
+  console.log('Custom middle ware called')
+  next()
+}
+app.use(customMiddleWare)
+
+// const validateMiddleWare = (req,res,next)=>{
+//   if(req.files == null || req.body.title == null ){
+//     return res.redirect('/post/new')
+//   }
+//   next()
+// }
+// app.use('/posts/store', validateMiddleWare)
+
+
+
 app.set('view engine','ejs')
 app.use(express.static('public'))
 mongoose.connect('mongodb://localhost/my_database', { useNewUrlParser: true})
