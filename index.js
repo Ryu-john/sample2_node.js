@@ -13,6 +13,10 @@ app.use(expressSesstion({
   secret: 'keyboard cat'
 }))
 
+// flash involve
+const flash = require('connect-flash')
+app.use(flash())
+
 // authenticate get in posts/store and posts/new 
 const authMiddleware = require('./middleware/authMiddleware')
 // Autenticated bind in register and login
