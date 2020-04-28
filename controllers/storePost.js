@@ -7,7 +7,13 @@ module.exports = (req,res)=>{
     await BlogPost.create({
       ...req.body,
       image: '/img/'+image.name,
-      userid: req.session.userId
+      userid: req.session.userId,
+      if(error){
+        const validationErrors = Object.keys(error.errors).map(key => error.errors[key].message)
+        req.flash('validationErrors',validationErrors)
+        req.flash('data', req.body)
+        return res.redirect('/new')
+      }
     })
     res.redirect('/')
   })

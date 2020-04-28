@@ -12,11 +12,17 @@ module.exports = (req,res) =>{
           res.redirect('/')
         }
         else{
+          //パスワードが間違っている
+          req.flash('data',req.body)
+          req.flash('failed','※パスワードが間違っています')
           res.redirect('/auth/login')
         }
       })
     } 
     else{
+      // ユーザーネームが間違っている
+      req.flash('data',req.body)
+      req.flash('failed','※入力されたユーザーネームは登録されていません')
       res.redirect('/auth/login')
     }
   })

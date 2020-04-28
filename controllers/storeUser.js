@@ -8,7 +8,6 @@ module.exports = (req,res)=>{
       req.flash('validationErrors',validationErrors)
       req.flash('data',req.body)
       return res.redirect('/auth/register')
-
     }
     res.redirect('/')
   })
